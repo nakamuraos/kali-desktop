@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+set -e
+if [ ! -f "/bin/sh"  ]; then
+    ln -s /usr/bin/sh /bin/sh
+fi

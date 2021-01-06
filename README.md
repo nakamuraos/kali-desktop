@@ -3,9 +3,23 @@
 This repository cloned from https://github.com/lukaszlach/kali-desktop
 
 **Update**:
-- Change docker build image to `kalilinux/kali-rolling` (latest)
-- Change resolution default `1024x576x24` (lower)
-- Upgrade `s6-overlay`'s version to `v2.1.0.2`
+- Changed docker build image to `kalilinux/kali-rolling` (latest)
+- Changed resolution default `1024x576x24` (lower)
+- Upgraded `s6-overlay`'s version to `v2.1.0.2`
+- Fixed: the image `kali-rolling` missing path `/bin/sh` (this will cause below error)
+```bash
+# apt-get update
+Get:1 http://kali.download/kali kali-rolling InRelease [30.5 kB]
+Err:1 http://kali.download/kali kali-rolling InRelease
+  Couldn't execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/http.kali.org_kali_dists_kali-rolling_InRelease
+Reading package lists... Done
+W: GPG error: http://kali.download/kali kali-rolling InRelease: Couldn't execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/http.kali.org_kali_dists_kali-rolling_InRelease
+E: The repository 'http://http.kali.org/kali kali-rolling InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+E: Problem executing scripts APT::Update::Post-Invoke '[ ! -x /usr/bin/debtags ] || debtags update || true'
+E: Sub-process returned an error code
+```
 ---
 
 [![Docker pulls](https://img.shields.io/docker/pulls/thinhhv/kali-desktop.svg?label=docker+pulls)](https://hub.docker.com/r/thinhhv/kali-desktop)
